@@ -1,0 +1,9 @@
+#!/bin/bash
+
+s_path=$(pwd)
+e_path=${0%/*}
+
+echo 'bash-script_path:    '$e_path
+echo 'bash-execution_path: '$s_path
+
+python3 ~/bin/.commands/engine.py $s_path $e_path $@

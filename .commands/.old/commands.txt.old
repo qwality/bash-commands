@@ -1,0 +1,6 @@
+sudo prime-select	[ query | intel | nvidia ]
+ftp-uploader	[ *files to upload* ]	[ *server path* ]
+blueman-manager
+gnome-screenshot	[ -a | -w ]
+gnome-system-monitor
+commands	[ -a "command [ A | B ]" | -e ]
