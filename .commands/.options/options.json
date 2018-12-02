@@ -1,7 +1,1 @@
-[
-{"flag": "default", "program": "python3",	"file": "default.py",	"args": "False"},
-{"flag": "-a",		"program": "python3",	"file": "add.py",		"args": "True"},
-{"flag": "-e",		"program": "sh",		"file": "edit",			"args": "False"},
-{"flag": "-h",		"program": "python3",	"file": "help.py",		"args": "False"},
-{"flag": "-o",		"program": "python3",	"file": "add_option.py","args": "True"}
-]
+[{"flag": "default", "program": "python3", "file": "default.py", "args": "False"}, {"flag": "-a", "program": "python3", "file": "add.py", "args": "True"}, {"flag": "-e", "program": "sh", "file": "edit", "args": "False"}, {"flag": "-h", "program": "python3", "file": "help.py", "args": "False"}, {"flag": "-o", "program": "python3", "file": "add_option.py", "args": "True"}]

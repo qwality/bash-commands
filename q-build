@@ -1,6 +1,5 @@
 #!/bin/bash
 
-q_build=~/bin/.q-build/engine.py
 name=${0##*/}
 e_path=${0%/*}
 s_path=$(pwd)
@@ -9,4 +8,4 @@ s_path=$(pwd)
 #echo 'bash-script_path:    '$e_path
 #echo 'bash-execution_path: '$s_path
 
-python3 $q_build $e_path $s_path $name $@
+python3 ~/bin/.commands/engine.py $e_path $s_path $name $@

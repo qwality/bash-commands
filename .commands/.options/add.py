@@ -25,17 +25,19 @@ def option_to_dict(string):
 	#print("name: ", name,"desc: ", desc)
 	return d
 
-def main(path, *args):
-	path = '/'.join(path.split('/')[:-2]) + '/'
-	args = args[0][0]
-	#print(args)
-	command = re.findall('([^]]+)\[', args)
-	if len(command) > 0:
-		command = command[0][:-1]
-	else:
-		command = args
+def main(p_path, path, e_path, *args):
+	#print("p-add-path:         ", path)
+	#print("p-add-e_path:       ", e_path)
+	#print("p-add-args:         ", list(args))
+	
+	if len(args) == 0:
+		print("bad input")
+		return 1
 		
-	cargs = re.findall('\[([^]]+)\]', args)
+	command = args[0]
+	comment = ' '.join(args[1:])
+		
+	cargs = re.findall('\[([^]]+)\]', comment)
 	options = list(
 		map(
 			lambda x: list(
@@ -49,13 +51,13 @@ def main(path, *args):
 	)
 	
 	new_command = {"command": command, "options": options}
+	#print(new_command)
 	
-	data = load_json(path + "./data.json")
+	data = load_json(path + "/data.json")
 	data.append(new_command)
-	
-	save_json(data, path + "./data.json")
+	save_json(data, path + "/data.json")
 	
 	#print(data)
 
 if __name__ == "__main__":
-	main(sys.argv[0], sys.argv[1:])
+	main(*sys.argv)

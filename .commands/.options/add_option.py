@@ -25,30 +25,42 @@ def option_to_dict(string):
 	#print("name: ", name,"desc: ", desc)
 	return d
 
-def main(path, *args):
-	path = '/'.join(path.split('/')[:-2]) + '/'
-	args = args[0][0]
-	#print(args)
-	flag = re.findall('-([^ ]+) ', args)
-	if len(flag) > 0:
-		flag = flag[0]
-	else:
-		print("-o [ -flag_name(no spaces) | True/False | file name | executable ]")
+def main(p_path, path, e_path, *args):
+	#print("p-add_o-path:       ", path)
+	#print("p-add_o-e_path:     ", e_path)
+	#print("p-add_o-args:       ", list(args))
+	
+	if len(args) < 4:
+		print("bad input")
 		return 1
-				
-	arg = re.findall('(?<=(' + flag + '))(\s+\S+)', args)[0][1]
-	_file = re.findall('(?<=(' + flag + ' ' + '))(\S+)', args)[0][1]
 	
-	print(flag, arg)
+	options = load_json(path + "/.options/options.json")
 	
-	#new_command = {"command": command, "options": options}
+	flag, arg, program, *file_name = args
+	file_name = ' '.join(file_name)
 	
-	#data = load_json(path + ".options/options.json")
-	#data.append(new_command)
+	if flag[0] != '-':
+		print("bad input")
+		return 1
 	
-	#save_json(data, path + ".options/options.json")
+	for option in options[1:]:
+		if option["flag"] == flag:
+			print("bad input")
+			return 1
+			
+	if arg == "True" or arg == "False":
+		pass
+	else:
+		print("bad input", arg)
+		return 1
+	
+	#print(flag, arg, program, file_name)
+	
+	new_command = {"flag": flag, "program": program, "file": file_name, "args": arg}
+	options.append(new_command)
+	save_json(options, path + "/.options/options.json")
 	
 	#print(data)
 
 if __name__ == "__main__":
-	main(sys.argv[0], sys.argv[1:])
+	main(*sys.argv)

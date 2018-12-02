@@ -40,15 +40,14 @@ def pretty_print(data):
 	for row in data:
 		print("".join(row[i].ljust(widths[i] + 2) for i in range(len(row))))
 			
-		
-
-def main(path, *args):
-	path = '/'.join(path.split('/')[:-2]) + '/'
-	args = args[0]
+def main(p_path, path, e_path, *args):
+	#print("p-default-path:     ", path)
+	#print("p-default-e_path:   ", e_path)
+	#print("p-default-args:     ", list(args))
 	
-	lst = list(map(radek, load_json(path + "./data.json")))
+	lst = list(map(radek, load_json(path + "/data.json")))
 	
 	pretty_print(lst)
 
 if __name__ == "__main__":
-	main(sys.argv[0], sys.argv[1:])
+	main(*sys.argv)

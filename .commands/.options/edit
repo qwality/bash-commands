@@ -1,2 +1,2 @@
 #!/bin/bash
-gedit "${0%/*}/../data.json"
+gedit "$1/data.json"
